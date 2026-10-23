@@ -15,7 +15,7 @@
   function contestsFor(id,month){return data.contests.filter(c=>(!month || c.date.startsWith(month))&&c.results.some(r=>r.memberId===id));}
   function dayInfo(id,date){const daily=data.daily.find(d=>d.memberId===id&&d.date===date);const contests=contestsFor(id).filter(c=>c.date===date);return {daily,contests,contestAC:contests.reduce((n,c)=>n+c.results.find(r=>r.memberId===id).solved,0)};}
   function sum(rows,key){return rows.reduce((n,row)=>n+row[key],0);}
- function status(){const badge=$('#data-state');badge.textContent='仅公开汇总 · 个人记录保留本地';}
+ function status(){const badge=$('#data-state');badge.textContent='公开昵称与赛事成绩 · 答案仅本地保存';}
   function sortedResults(contest){
     const results=contest.results.map(r=>({...r}));
     const compare=contest.format==='ICPC'?(a,b)=>b.solved-a.solved||a.penalty-b.penalty:contest.format==='SCORE'?(a,b)=>b.score-a.score||a.penalty-b.penalty:(a,b)=>a.officialRank-b.officialRank;
@@ -52,7 +52,7 @@
     const m=member(selectedMember),rows=recordsFor(m.id,selectedMonth),contests=contestsFor(m.id,selectedMonth);
     const monthResults=contests.map(c=>c.results.find(r=>r.memberId===m.id));
     root.innerHTML+='<div class="record-toolbar member-filter"><label>查看成员<select id="member-picker">'+data.members.map(x=>'<option value="'+esc(x.id)+'" '+(x.id===m.id?'selected':'')+'>'+esc(x.name+' · '+x.role)+'</option>').join('')+'</select></label></div><div class="profile-layout"><aside class="profile-sidebar"><div class="profile-avatar">'+esc(m.name.slice(0,1))+'</div><h3>'+esc(m.name)+'</h3><span class="profile-role">'+esc(m.role+(m.grade?' / '+m.grade:''))+'</span><p class="bio">'+esc(m.bio||'个人简介与训练方向待补充。')+'</p><div class="accounts">'+accountLinks(m)+'</div>'+(Object.keys(m.accounts||{}).length?'':'<p class="record-small">平台账号尚未录入。</p>')+'</aside><div class="profile-main"><div class="metric-grid">'+metric(rows.length?hours(sum(rows,'minutes'))+'h':'—','本月训练时长 · 以日报为准')+metric(rows.length?sum(rows,'practiceSolved'):'—','本月日常 AC · 不含比赛')+metric(contests.length,'本月参赛场次')+metric(monthResults.length?sum(monthResults,'solved'):'—','本月比赛 AC · 单独统计')+'</div><div class="month-strip"><h3>每日训练日历</h3><label>查看月份<input id="month-picker" type="month" value="'+esc(selectedMonth)+'" aria-label="查看月份"></label></div><div class="calendar" aria-label="每日训练日历"></div><p class="record-small">点击任一天查看刷题、竞赛和产出详情。训练时长填写当天总投入，包含比赛时段；比赛时长不会再次叠加。</p><div id="day-detail" class="day-detail"></div></div></div><div class="profile-log"><h3 style="font-size:16px">本月逐日记录</h3><div class="table-wrap"><table class="record-table"><thead><tr><th>日期</th><th>记录状态</th><th>训练时长</th><th>日常 AC / 提交</th><th>比赛 AC / 场次</th><th>产出摘要</th></tr></thead><tbody id="daily-table"></tbody></table></div></div>';
-    renderCalendar();renderDay();
+    renderCalendar();renderDay();renderHistory();
   }
   function monthDates(){if(!/^\d{4}-\d{2}$/.test(selectedMonth))return [];const [year,month]=selectedMonth.split('-').map(Number),count=new Date(Date.UTC(year,month,0)).getUTCDate();return Array.from({length:count},(_,i)=>selectedMonth+'-'+String(i+1).padStart(2,'0'));}
   function renderCalendar(){
@@ -74,6 +74,12 @@
     target.innerHTML+='';
   }
 
+ function renderHistory(){
+ const root=$('#view-members');
+ if(!selectedMember)return;
+ const history=contestsFor(selectedMember).sort((a,b)=>b.date.localeCompare(a.date));
+ root.innerHTML+='<div class="profile-log"><h3>历史比赛成绩</h3><p>按场次展示分数与名次；不同赛制的原始分数不直接累加。</p>'+(history.length?'<div class="table-wrap"><table class="record-table"><thead><tr><th>日期</th><th>比赛</th><th>名次</th><th>得分</th><th>AC</th><th>罚时</th></tr></thead><tbody>'+history.map(c=>{const r=sortedResults(c).find(x=>x.memberId===selectedMember);return '<tr><td>'+esc(c.date)+'</td><td><button class="text-button" data-contest="'+esc(c.id)+'">'+esc(c.title)+' ↗</button></td><td>'+r.rank+'</td><td>'+r.score+'</td><td>'+r.solved+'</td><td>'+r.penalty+'</td></tr>';}).join('')+'</tbody></table></div>':empty('暂无参赛记录','首次录入成绩后，这里将保留每一场历史排名。'))+'</div>';
+ }
  function renderAll(){status();renderPreviews();renderContests();renderProfile();}
  function switchTab(tab){$$('.records-tab',dialog).forEach(b=>{const active=b.dataset.recordTab===tab;b.setAttribute('aria-selected',String(active));b.tabIndex=active?0:-1;});$$('.records-view',dialog).forEach(v=>v.hidden=v.id!=='view-'+tab);$('.records-content').scrollTop=0;}
  let oldOverflow='';function open(tab='contests',id){if(!['contests','members'].includes(tab))return;if($('.menu-toggle').getAttribute('aria-expanded')==='true')$('.menu-toggle').click();if(id){selectedMember=id;renderProfile();}if(!dialog.open){oldOverflow=document.body.style.overflow;dialog.showModal();document.body.style.overflow='hidden';}switchTab(tab);}
@@ -87,6 +93,9 @@
   function navScroll(){const y=scrollY,delta=y-previousY,current=Math.sign(delta);if(current&&current!==direction)travel=0;if(current){travel+=Math.abs(delta);direction=current;}const menuOpen=$('.menu-toggle').getAttribute('aria-expanded')==='true';if(y<85||menuOpen){header.classList.remove('nav-hidden');document.documentElement.classList.remove('nav-away');}else if(travel>15){const hide=direction>0;header.classList.toggle('nav-hidden',hide);document.documentElement.classList.toggle('nav-away',hide);}previousY=y;scrollQueued=false;}
   addEventListener('scroll',()=>{if(!scrollQueued){scrollQueued=true;requestAnimationFrame(navScroll);}},{passive:true});header.addEventListener('focusin',()=>{header.classList.remove('nav-hidden');document.documentElement.classList.remove('nav-away');});
 
- addEventListener('acm:state',()=>{data=window.ACM_STATE.data;renderAll();});
+ fetch('data/records.json', {cache:'no-store'}).then(r=>{if(!r.ok)throw Error();return r.json();}).then(value=>{
+ if(value.schemaVersion!==1||!Array.isArray(value.members)||!Array.isArray(value.contests)||!Array.isArray(value.daily))throw Error();
+ data=value;renderAll();
+ }).catch(()=>{$('#data-state').textContent='赛事数据读取失败，请刷新重试';});
  renderAll();if(window.ACM_STATE){data=window.ACM_STATE.data;renderAll();}
 })();
