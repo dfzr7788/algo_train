@@ -1,0 +1,1144 @@
+{
+  "titles": {
+    "1": "基础实现、枚举与排序",
+    "2": "前缀和、差分、双指针与二分",
+    "3": "贪心与常用数据结构",
+    "4": "递归、搜索与图的遍历",
+    "5": "树、并查集与基础图论",
+    "6": "简单动态规划",
+    "7": "数论与组合数学",
+    "8": "博弈、计数与字符串综合复习"
+  },
+  "lessons": {
+    "1": [
+      "把题意写成可验证的步骤，能够按数据范围选择枚举规模，独立完成数组、结构体与字符串操作。",
+      "第一讲：复杂度、整数溢出、枚举上界、标记与预处理；第二讲：排序比较规则、稳定性、字符串解析、二维坐标变换。快速选择在 P1923 后讲；不要求一开始就熟悉 STL。",
+      "依次完成前10题，再做 P1205、P1786、P1022、P7910，最后 P1065。第一周五道黄题主要检验复杂实现，P1065 为压轴，讲评时用时间轴手算，不让新生一开始就耗在长模拟上。",
+      "能解释排序的每一项比较条件；为字符串解析写出负号、常数项和边界样例；能说明暴力枚举的次数。"
+    ],
+    "2": [
+      "把反复计算转成预处理，理解答案二分的前提和 check 的含义。",
+      "第一讲：一维/二维前缀和、差分、区间合并、双指针；第二讲：有序查找、整数答案二分、实数二分。先在 P1873、P1824 上证明单调性，再讲 P1083 的复合检查。",
+      "先做 P8218、P2004、P2367、P3397、P1496，再做 P2249 与答案二分组。P3406 负责差分应用，P3743 最后做；P1314 强调离散跳变，不能以“找到相等值”为循环结束目标。",
+      "脱稿写出一个 lower_bound 和一个最大可行值二分；说明闭区间差分为什么更新 r+1；为每个 check 写一句单调性证明。"
+    ],
+    "3": [
+      "理解栈、队列、堆及单调结构分别维护什么信息；能够为贪心选择给出交换或排除依据。",
+      "第一讲：栈、队列、后缀表达式、基础贪心；第二讲：二叉堆、单调栈、滑动窗口频次与 ST 表。单调队列只做课堂推导，不额外增加作业。P2234 可先用排序数组理解前驱后继，再学习 C++ set 或自主选择更高效实现。",
+      "P3378 应在 P2058、P2947、P3865 之前完成。P3865 是静态查询拓展，不把所有区间查询都套 ST 表；课程只教查询 max 的可重叠性质。",
+      "独立手写数组栈、队列和最小堆；解释单调栈为什么每个元素最多进出一次；给出一个错误贪心的反例。"
+    ],
+    "4": [
+      "能定义搜索状态、区分回溯标记与永久访问标记，并把无权最短路转成 BFS。",
+      "第一讲：递归、排列组合、路径搜索、剪枝、回文构造；第二讲：BFS、连通块、隐式图、反图。P1464 引入记忆化，为第6周做铺垫。素数试除在 P1217 前用20分钟补齐。",
+      "P1706→P1157→P1605；P1443→P1451→P1825→P2895；最后完成 P2853、P3916。P1010 与 P1464 用来对照“递归表达”与“重复状态”。",
+      "说明 BFS 首次到达最短的前提；解释 P1605 为什么回溯撤销、P1451 为什么不能撤销；能够画出一题的状态转移。"
+    ],
+    "5": [
+      "完成图存储、树遍历、连通性、最短路、生成树和依赖图的第一轮学习。",
+      "第一讲：邻接表、二叉树、树遍历、子树统计、并查集与 Kruskal；第二讲：Dijkstra、Floyd、拓扑排序。P1113 的编号本身提供依赖顺序，要求再用显式拓扑排序实现一次，避免只会利用编号的特殊条件。",
+      "先 P1305、P1030，再 B3613、B2169、B2171；P3367 在 P1536、P3366 之前做；P3371、P2910、P1113 放后半周。P3612 是递归复习。两道树基础题规模较大，先学显式栈和逆序累加。",
+      "能区分最短路径树与最小生成树；说明 Dijkstra 的非负边条件；检查不连通图、重边与孤立点。P3371 使用 Dijkstra，弱数据通过不作为 SPFA 最坏复杂度正确的证据。"
+    ],
+    "6": [
+      "每题先写状态、转移、初始化、顺序与答案位置，再写代码；掌握线性、网格、子序列、背包和简单区间DP。",
+      "第一讲：线性/网格DP、LIS与方案恢复；第二讲：01/完全/有界背包、计数DP、区间DP。P1833 的有界部分可用二进制分组；树形、状压与数位DP仅介绍状态形状，留到下一轮。",
+      "先 P1216、P1002、P1115，再 P1091；背包按 P1048→P1164→P1616→P1077→P1833；黄题 P1775 最后完成。P2196 与第5周 DAG 联系，P3842 训练压缩无用历史。",
+      "能解释01背包倒序与完全背包正序的原因；区分“恰好装满”和“不超过容量”的初始化；对照小规模枚举验证转移。"
+    ],
+    "7": [
+      "掌握基础数论工具，并能把组合计数写成正确且不溢出的计算过程。",
+      "第一讲：GCD/LCM、试除、埃氏筛/线性筛、约数与区间筛；第二讲：位运算、快速幂、同余、质数模逆元、组合数、二项式定理。只读知识库相关章节的基础部分，不在本周展开 Pollard-Rho、Lucas 或大整数素性测试。",
+      "P1029、P1075、P3383、P1403、P1226 为工具链；P1072 与 P1835 做数论应用；P1313、P2822、P1246 做计数应用。P3811 前明确模数为质数且范围内元素非零。",
+      "写出 gcd、筛法和快速幂；能解释为什么先除再乘计算LCM；能给出组合数不能在任意模数下直接用除法的反例。"
+    ],
+    "8": [
+      "理解博弈的必胜必败判定及策略证明，完成计数和字符串的入门闭环。",
+      "第一讲：终局、必胜必败态、巴什、Nim的异或证明与制胜一步；第二讲：补集/容斥、卡特兰递推、字符串哈希与Trie。SG只要求手算mex和识别独立子游戏，不要求完成高难SG题。",
+      "P1161 热身后做 P1288，再做 P1199、P4018；P1044、P1287、P3799、P3197 构成计数线；P3370、P3405、P2580 构成字符串线。P1965、P1087 为前期复习。",
+      "不能只提交一行博弈结论：需解释终局、必败态不能到必败态、必胜态能到必败态；会手算 Nim 的制胜操作；能区分前缀匹配和完整名字查询。"
+    ]
+  },
+  "rows": [
+    {
+      "week": 0,
+      "id": "P1085",
+      "title": "不高兴的津津",
+      "color": "红",
+      "url": "https://www.luogu.com.cn/problem/P1085",
+      "focus": ""
+    },
+    {
+      "week": 0,
+      "id": "P1307",
+      "title": "数字反转",
+      "color": "红",
+      "url": "https://www.luogu.com.cn/problem/P1307",
+      "focus": ""
+    },
+    {
+      "week": 0,
+      "id": "P1047",
+      "title": "校门外的树",
+      "color": "红",
+      "url": "https://www.luogu.com.cn/problem/P1047",
+      "focus": ""
+    },
+    {
+      "week": 0,
+      "id": "P1059",
+      "title": "明明的随机数",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1059",
+      "focus": ""
+    },
+    {
+      "week": 0,
+      "id": "P1094",
+      "title": "纪念品分组",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1094",
+      "focus": ""
+    },
+    {
+      "week": 0,
+      "id": "P1036",
+      "title": "选数",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1036",
+      "focus": ""
+    },
+    {
+      "week": 0,
+      "id": "P1102",
+      "title": "A-B 数对",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1102",
+      "focus": ""
+    },
+    {
+      "week": 0,
+      "id": "P1162",
+      "title": "填涂颜色",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1162",
+      "focus": ""
+    },
+    {
+      "week": 0,
+      "id": "P1049",
+      "title": "装箱问题",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1049",
+      "focus": ""
+    },
+    {
+      "week": 0,
+      "id": "P1090",
+      "title": "合并果子",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P1090",
+      "focus": ""
+    },
+    {
+      "week": 0,
+      "id": "P2678",
+      "title": "跳石头",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P2678",
+      "focus": ""
+    },
+    {
+      "week": 0,
+      "id": "P1434",
+      "title": "滑雪",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P1434",
+      "focus": ""
+    },
+    {
+      "week": 0,
+      "id": "P1638",
+      "title": "逛画展",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P1638",
+      "focus": ""
+    },
+    {
+      "week": 0,
+      "id": "P1069",
+      "title": "细胞分裂",
+      "color": "绿",
+      "url": "https://www.luogu.com.cn/problem/P1069",
+      "focus": ""
+    },
+    {
+      "week": 0,
+      "id": "P1955",
+      "title": "程序自动分析",
+      "color": "绿",
+      "url": "https://www.luogu.com.cn/problem/P1955",
+      "focus": ""
+    },
+    {
+      "week": 1,
+      "id": "P1422",
+      "title": "小玉家的电费",
+      "color": "红",
+      "url": "https://www.luogu.com.cn/problem/P1422",
+      "focus": "分段计算与输出精度"
+    },
+    {
+      "week": 1,
+      "id": "P1427",
+      "title": "小鱼的数字游戏",
+      "color": "红",
+      "url": "https://www.luogu.com.cn/problem/P1427",
+      "focus": "读入终止条件、数组与逆序输出"
+    },
+    {
+      "week": 1,
+      "id": "P1008",
+      "title": "三连击",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1008",
+      "focus": "缩小枚举空间与数字去重"
+    },
+    {
+      "week": 1,
+      "id": "P1003",
+      "title": "铺地毯",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1003",
+      "focus": "覆盖顺序与逆序枚举"
+    },
+    {
+      "week": 1,
+      "id": "P1068",
+      "title": "分数线划定",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1068",
+      "focus": "排序规则、并列分数与边界"
+    },
+    {
+      "week": 1,
+      "id": "P1093",
+      "title": "奖学金",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1093",
+      "focus": "多关键字比较与原编号"
+    },
+    {
+      "week": 1,
+      "id": "P1563",
+      "title": "玩具谜题",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1563",
+      "focus": "环形下标与方向状态"
+    },
+    {
+      "week": 1,
+      "id": "P1149",
+      "title": "火柴棒等式",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1149",
+      "focus": "预处理代价与确定枚举上界"
+    },
+    {
+      "week": 1,
+      "id": "P1098",
+      "title": "字符串的展开",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1098",
+      "focus": "分支条件、字符类别与输出"
+    },
+    {
+      "week": 1,
+      "id": "P1923",
+      "title": "求第 k 小的数",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1923",
+      "focus": "排序与快速选择对照，下标从0开始"
+    },
+    {
+      "week": 1,
+      "id": "P1022",
+      "title": "计算器的改良",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P1022",
+      "focus": "解析符号、系数与等号两侧"
+    },
+    {
+      "week": 1,
+      "id": "P1205",
+      "title": "方块转换 Transformations",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P1205",
+      "focus": "二维坐标旋转、反射与规则优先级"
+    },
+    {
+      "week": 1,
+      "id": "P1065",
+      "title": "作业调度方案",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P1065",
+      "focus": "按给定顺序模拟资源占用"
+    },
+    {
+      "week": 1,
+      "id": "P1786",
+      "title": "帮贡排序",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P1786",
+      "focus": "排序前后的规则分阶段处理"
+    },
+    {
+      "week": 1,
+      "id": "P7910",
+      "title": "插入排序",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P7910",
+      "focus": "修改后的相对次序与稳定性分析"
+    },
+    {
+      "week": 2,
+      "id": "P1614",
+      "title": "爱与愁的心痛",
+      "color": "红",
+      "url": "https://www.luogu.com.cn/problem/P1614",
+      "focus": "固定长度区间和，比较枚举与前缀和"
+    },
+    {
+      "week": 2,
+      "id": "P1420",
+      "title": "最长连号",
+      "color": "红",
+      "url": "https://www.luogu.com.cn/problem/P1420",
+      "focus": "连续段长度与断点重置"
+    },
+    {
+      "week": 2,
+      "id": "P8218",
+      "title": "求区间和",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P8218",
+      "focus": "一维前缀和与端点统一"
+    },
+    {
+      "week": 2,
+      "id": "P2004",
+      "title": "领地选择",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P2004",
+      "focus": "二维前缀和与固定正方形枚举"
+    },
+    {
+      "week": 2,
+      "id": "P2367",
+      "title": "语文成绩",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P2367",
+      "focus": "批量区间加与差分恢复"
+    },
+    {
+      "week": 2,
+      "id": "P3397",
+      "title": "地毯",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P3397",
+      "focus": "二维差分的四个角"
+    },
+    {
+      "week": 2,
+      "id": "P1496",
+      "title": "火烧赤壁",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1496",
+      "focus": "排序合并区间，连续坐标长度"
+    },
+    {
+      "week": 2,
+      "id": "P2249",
+      "title": "查找",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P2249",
+      "focus": "第一个满足条件的位置"
+    },
+    {
+      "week": 2,
+      "id": "P1873",
+      "title": "砍树",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1873",
+      "focus": "二分答案与总木料判定"
+    },
+    {
+      "week": 2,
+      "id": "P1824",
+      "title": "进击的奶牛",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1824",
+      "focus": "最大化最小间距与贪心判定"
+    },
+    {
+      "week": 2,
+      "id": "P2440",
+      "title": "木材加工",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P2440",
+      "focus": "最大可行长度与无解边界"
+    },
+    {
+      "week": 2,
+      "id": "P1083",
+      "title": "借教室",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P1083",
+      "focus": "二分失败位置与差分检查"
+    },
+    {
+      "week": 2,
+      "id": "P1314",
+      "title": "聪明的质监员",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P1314",
+      "focus": "阈值二分、前缀统计与离散跳变"
+    },
+    {
+      "week": 2,
+      "id": "P3406",
+      "title": "海底高铁",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P3406",
+      "focus": "统计边的使用次数，再比较票价方案"
+    },
+    {
+      "week": 2,
+      "id": "P3743",
+      "title": "小鸟的设备",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P3743",
+      "focus": "实数二分、总缺口与无限使用条件"
+    },
+    {
+      "week": 3,
+      "id": "P1739",
+      "title": "表达式括号匹配",
+      "color": "红",
+      "url": "https://www.luogu.com.cn/problem/P1739",
+      "focus": "前缀合法性与最终余额"
+    },
+    {
+      "week": 3,
+      "id": "P1428",
+      "title": "小鱼比可爱",
+      "color": "红",
+      "url": "https://www.luogu.com.cn/problem/P1428",
+      "focus": "小规模基准枚举，理解在线统计目标"
+    },
+    {
+      "week": 3,
+      "id": "B3614",
+      "title": "栈",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/B3614",
+      "focus": "栈操作、空栈与整数范围"
+    },
+    {
+      "week": 3,
+      "id": "B3616",
+      "title": "队列",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/B3616",
+      "focus": "队头队尾、空队列与操作模拟"
+    },
+    {
+      "week": 3,
+      "id": "P1540",
+      "title": "机器翻译",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1540",
+      "focus": "先进先出与存在性维护"
+    },
+    {
+      "week": 3,
+      "id": "P1449",
+      "title": "后缀表达式",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1449",
+      "focus": "操作数栈与非交换运算顺序"
+    },
+    {
+      "week": 3,
+      "id": "P1223",
+      "title": "排队接水",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1223",
+      "focus": "排序贪心与等待时间贡献"
+    },
+    {
+      "week": 3,
+      "id": "P1208",
+      "title": "混合牛奶 Mixing Milk",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1208",
+      "focus": "按单位价格购买与最后一批截断"
+    },
+    {
+      "week": 3,
+      "id": "P1181",
+      "title": "数列分段 Section I",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1181",
+      "focus": "非负数下尽量延长当前段"
+    },
+    {
+      "week": 3,
+      "id": "P2234",
+      "title": "营业额统计",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P2234",
+      "focus": "在线前驱后继；可用有序数组理解再优化"
+    },
+    {
+      "week": 3,
+      "id": "P3378",
+      "title": "堆",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P3378",
+      "focus": "手写二叉堆，掌握上浮下沉"
+    },
+    {
+      "week": 3,
+      "id": "P1106",
+      "title": "删数问题",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P1106",
+      "focus": "删除逆序位置的贪心依据"
+    },
+    {
+      "week": 3,
+      "id": "P2058",
+      "title": "海港",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P2058",
+      "focus": "队列过期事件与频次归零"
+    },
+    {
+      "week": 3,
+      "id": "P2947",
+      "title": "Look Up S",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P2947",
+      "focus": "最近更高元素与单调栈"
+    },
+    {
+      "week": 3,
+      "id": "P3865",
+      "title": "ST 表与 RMQ",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P3865",
+      "focus": "倍增预处理与可重叠查询"
+    },
+    {
+      "week": 4,
+      "id": "P1424",
+      "title": "小鱼的航程（改进版）",
+      "color": "红",
+      "url": "https://www.luogu.com.cn/problem/P1424",
+      "focus": "循环与周期，复习边界"
+    },
+    {
+      "week": 4,
+      "id": "P1421",
+      "title": "小玉买文具",
+      "color": "红",
+      "url": "https://www.luogu.com.cn/problem/P1421",
+      "focus": "整数化金额与整除，复习数值处理"
+    },
+    {
+      "week": 4,
+      "id": "P1706",
+      "title": "全排列问题",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1706",
+      "focus": "搜索树、使用标记与回溯恢复"
+    },
+    {
+      "week": 4,
+      "id": "P1157",
+      "title": "组合的输出",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1157",
+      "focus": "递增选择避免重复"
+    },
+    {
+      "week": 4,
+      "id": "P1605",
+      "title": "迷宫",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1605",
+      "focus": "简单路径计数与回溯撤销标记"
+    },
+    {
+      "week": 4,
+      "id": "P1443",
+      "title": "马的遍历",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1443",
+      "focus": "BFS分层与最少步数"
+    },
+    {
+      "week": 4,
+      "id": "P1451",
+      "title": "求细胞数量",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1451",
+      "focus": "连通块扫描与一次访问"
+    },
+    {
+      "week": 4,
+      "id": "P1217",
+      "title": "回文质数",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1217",
+      "focus": "构造回文再判素数，缩小搜索空间"
+    },
+    {
+      "week": 4,
+      "id": "P1464",
+      "title": "Function",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1464",
+      "focus": "缓存重复子问题与多测复用"
+    },
+    {
+      "week": 4,
+      "id": "P1010",
+      "title": "幂次方",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1010",
+      "focus": "递归表达与基例"
+    },
+    {
+      "week": 4,
+      "id": "P1219",
+      "title": "八皇后",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P1219",
+      "focus": "列与对角线剪枝，方案输出与计数"
+    },
+    {
+      "week": 4,
+      "id": "P1825",
+      "title": "Corn Maze S",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P1825",
+      "focus": "传送规则与BFS状态转移"
+    },
+    {
+      "week": 4,
+      "id": "P2895",
+      "title": "Meteor Shower S",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P2895",
+      "focus": "到达时间与危险时间的严格比较"
+    },
+    {
+      "week": 4,
+      "id": "P2853",
+      "title": "Cow Picnic S",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P2853",
+      "focus": "多起点可达集合求交"
+    },
+    {
+      "week": 4,
+      "id": "P3916",
+      "title": "图的遍历",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P3916",
+      "focus": "反向建图与按编号传播"
+    },
+    {
+      "week": 5,
+      "id": "P1319",
+      "title": "压缩技术",
+      "color": "红",
+      "url": "https://www.luogu.com.cn/problem/P1319",
+      "focus": "行列映射与连续段恢复"
+    },
+    {
+      "week": 5,
+      "id": "P1320",
+      "title": "压缩技术（续集版）",
+      "color": "红",
+      "url": "https://www.luogu.com.cn/problem/P1320",
+      "focus": "二维输入转连续计数"
+    },
+    {
+      "week": 5,
+      "id": "B3613",
+      "title": "图的存储与出边的排序",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/B3613",
+      "focus": "邻接表与邻点排序"
+    },
+    {
+      "week": 5,
+      "id": "B2169",
+      "title": "树的深度优先遍历序列",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/B2169",
+      "focus": "按序遍历，长链用显式栈避免递归栈溢出"
+    },
+    {
+      "week": 5,
+      "id": "B2171",
+      "title": "结点子树大小",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/B2171",
+      "focus": "遍历序逆序汇总子树，包含自身"
+    },
+    {
+      "week": 5,
+      "id": "P1536",
+      "title": "村村通",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1536",
+      "focus": "连通分量与新增边数"
+    },
+    {
+      "week": 5,
+      "id": "P1331",
+      "title": "海战",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1331",
+      "focus": "连通块之外检查船形合法性"
+    },
+    {
+      "week": 5,
+      "id": "P1030",
+      "title": "求先序排列",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1030",
+      "focus": "由中序和后序递归分解"
+    },
+    {
+      "week": 5,
+      "id": "P1305",
+      "title": "新二叉树",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1305",
+      "focus": "按输入关系建立二叉树并输出先序"
+    },
+    {
+      "week": 5,
+      "id": "P3612",
+      "title": "Secret Cow Code S",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P3612",
+      "focus": "递归下标映射，穿插复习"
+    },
+    {
+      "week": 5,
+      "id": "P3367",
+      "title": "并查集",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P3367",
+      "focus": "路径压缩、合并与连通查询"
+    },
+    {
+      "week": 5,
+      "id": "P3366",
+      "title": "最小生成树",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P3366",
+      "focus": "Kruskal选边与不连通判定"
+    },
+    {
+      "week": 5,
+      "id": "P3371",
+      "title": "单源最短路径（弱化版）",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P3371",
+      "focus": "使用Dijkstra训练非负边最短路"
+    },
+    {
+      "week": 5,
+      "id": "P2910",
+      "title": "Clear And Present Danger S",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P2910",
+      "focus": "Floyd预处理与给定路线累加"
+    },
+    {
+      "week": 5,
+      "id": "P1113",
+      "title": "杂务",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P1113",
+      "focus": "DAG依赖与最晚前驱完成时间"
+    },
+    {
+      "week": 6,
+      "id": "P1720",
+      "title": "月落乌啼算钱",
+      "color": "红",
+      "url": "https://www.luogu.com.cn/problem/P1720",
+      "focus": "递推、数值类型与输出格式"
+    },
+    {
+      "week": 6,
+      "id": "P1634",
+      "title": "禽兽的传染病",
+      "color": "红",
+      "url": "https://www.luogu.com.cn/problem/P1634",
+      "focus": "递推与乘法增长"
+    },
+    {
+      "week": 6,
+      "id": "P1091",
+      "title": "合唱队形",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1091",
+      "focus": "左右两遍最长子序列，区分严格递增与不下降"
+    },
+    {
+      "week": 6,
+      "id": "P1216",
+      "title": "数字三角形",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1216",
+      "focus": "状态含义、边界与滚动数组"
+    },
+    {
+      "week": 6,
+      "id": "P1002",
+      "title": "过河卒",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1002",
+      "focus": "网格DP与受控格标记"
+    },
+    {
+      "week": 6,
+      "id": "P1115",
+      "title": "最大子段和",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1115",
+      "focus": "以当前位置结尾的状态，全负数组"
+    },
+    {
+      "week": 6,
+      "id": "P1048",
+      "title": "采药",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1048",
+      "focus": "01背包与倒序容量"
+    },
+    {
+      "week": 6,
+      "id": "P1164",
+      "title": "小 A 点菜",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1164",
+      "focus": "01背包计数，区分最优值和方案数"
+    },
+    {
+      "week": 6,
+      "id": "P1616",
+      "title": "疯狂的采药",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1616",
+      "focus": "完全背包与正序容量"
+    },
+    {
+      "week": 6,
+      "id": "P1077",
+      "title": "摆花",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1077",
+      "focus": "有界数量的方案计数与防重"
+    },
+    {
+      "week": 6,
+      "id": "P2196",
+      "title": "挖地雷",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P2196",
+      "focus": "DAG最优值与路径恢复"
+    },
+    {
+      "week": 6,
+      "id": "P1775",
+      "title": "石子合并（弱化版）",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P1775",
+      "focus": "区间长度顺序与分割点"
+    },
+    {
+      "week": 6,
+      "id": "P3842",
+      "title": "线段",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P3842",
+      "focus": "压缩成左右端点两种状态"
+    },
+    {
+      "week": 6,
+      "id": "P1280",
+      "title": "尼克的任务",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P1280",
+      "focus": "时间轴DP与强制任务条件"
+    },
+    {
+      "week": 6,
+      "id": "P1833",
+      "title": "樱花",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P1833",
+      "focus": "按数量限制区分背包转移"
+    },
+    {
+      "week": 7,
+      "id": "P1200",
+      "title": "你的飞碟在这儿",
+      "color": "红",
+      "url": "https://www.luogu.com.cn/problem/P1200",
+      "focus": "字符映射、乘积与取模"
+    },
+    {
+      "week": 7,
+      "id": "P1179",
+      "title": "数字统计",
+      "color": "红",
+      "url": "https://www.luogu.com.cn/problem/P1179",
+      "focus": "拆位计数与枚举复习"
+    },
+    {
+      "week": 7,
+      "id": "P1029",
+      "title": "最大公约数和最小公倍数问题",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1029",
+      "focus": "GCD、LCM与互质因子对"
+    },
+    {
+      "week": 7,
+      "id": "P1075",
+      "title": "质因数分解",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1075",
+      "focus": "试除范围与题目保证"
+    },
+    {
+      "week": 7,
+      "id": "P3383",
+      "title": "线性筛素数",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P3383",
+      "focus": "筛法、素数序列与内存估计"
+    },
+    {
+      "week": 7,
+      "id": "P1403",
+      "title": "约数研究",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1403",
+      "focus": "交换统计对象，按倍数累加"
+    },
+    {
+      "week": 7,
+      "id": "P1226",
+      "title": "快速幂",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1226",
+      "focus": "指数二进制与模乘"
+    },
+    {
+      "week": 7,
+      "id": "P1072",
+      "title": "Hankson 的趣味题",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1072",
+      "focus": "枚举候选因子检查GCD和LCM"
+    },
+    {
+      "week": 7,
+      "id": "P1017",
+      "title": "进制转换",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1017",
+      "focus": "负进制的余数规范化"
+    },
+    {
+      "week": 7,
+      "id": "P1147",
+      "title": "连续正整数和",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1147",
+      "focus": "等差数列计数与双指针对照"
+    },
+    {
+      "week": 7,
+      "id": "P1835",
+      "title": "素数密度",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P1835",
+      "focus": "区间筛起点与1的处理"
+    },
+    {
+      "week": 7,
+      "id": "P3811",
+      "title": "模意义下的乘法逆元",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P3811",
+      "focus": "质数模数条件与线性逆元递推"
+    },
+    {
+      "week": 7,
+      "id": "P1313",
+      "title": "计算系数",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P1313",
+      "focus": "二项式定理、组合数与快速幂"
+    },
+    {
+      "week": 7,
+      "id": "P2822",
+      "title": "组合数问题",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P2822",
+      "focus": "杨辉三角取模与二维前缀计数"
+    },
+    {
+      "week": 7,
+      "id": "P1246",
+      "title": "编码",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P1246",
+      "focus": "按长度、字典序前缀进行组合计数"
+    },
+    {
+      "week": 8,
+      "id": "P1161",
+      "title": "开灯",
+      "color": "红",
+      "url": "https://www.luogu.com.cn/problem/P1161",
+      "focus": "翻转与奇偶性，为博弈热身"
+    },
+    {
+      "week": 8,
+      "id": "P1151",
+      "title": "子数整数",
+      "color": "红",
+      "url": "https://www.luogu.com.cn/problem/P1151",
+      "focus": "数位提取与条件枚举，复习实现"
+    },
+    {
+      "week": 8,
+      "id": "P1044",
+      "title": "栈",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1044",
+      "focus": "合法出栈序列计数与卡特兰递推"
+    },
+    {
+      "week": 8,
+      "id": "P3370",
+      "title": "字符串哈希",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P3370",
+      "focus": "去重、指纹与碰撞；排序可作确定性对照"
+    },
+    {
+      "week": 8,
+      "id": "P3405",
+      "title": "Cities and States S",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P3405",
+      "focus": "有序键配对、排除同州"
+    },
+    {
+      "week": 8,
+      "id": "P2241",
+      "title": "统计方形（数据加强版）",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P2241",
+      "focus": "分类计数，区分矩形与正方形"
+    },
+    {
+      "week": 8,
+      "id": "P1287",
+      "title": "盒子与球",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1287",
+      "focus": "有标号盒子的满射计数，对照递推与容斥"
+    },
+    {
+      "week": 8,
+      "id": "P1288",
+      "title": "取数游戏 II",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1288",
+      "focus": "沿零边界分析可行动作与奇偶性，证明策略"
+    },
+    {
+      "week": 8,
+      "id": "P1965",
+      "title": "转圈游戏",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1965",
+      "focus": "快速幂与环上位置"
+    },
+    {
+      "week": 8,
+      "id": "P1087",
+      "title": "FBI 树",
+      "color": "橙",
+      "url": "https://www.luogu.com.cn/problem/P1087",
+      "focus": "字符串分治与树的后序输出复习"
+    },
+    {
+      "week": 8,
+      "id": "P1199",
+      "title": "三国游戏",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P1199",
+      "focus": "从对手策略推导保证收益，不只照搬结论"
+    },
+    {
+      "week": 8,
+      "id": "P4018",
+      "title": "Roy&October之取石子",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P4018",
+      "focus": "打必胜必败表、找规律并证明"
+    },
+    {
+      "week": 8,
+      "id": "P3799",
+      "title": "小 Y 拼木棒",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P3799",
+      "focus": "频次组合计数，等长与不等长分情况"
+    },
+    {
+      "week": 8,
+      "id": "P2580",
+      "title": "于是他错误的点名开始了",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P2580",
+      "focus": "Trie或字典查询与已点名状态"
+    },
+    {
+      "week": 8,
+      "id": "P3197",
+      "title": "越狱",
+      "color": "黄",
+      "url": "https://www.luogu.com.cn/problem/P3197",
+      "focus": "总方案减补集，结合模快速幂"
+    }
+  ]
+}
